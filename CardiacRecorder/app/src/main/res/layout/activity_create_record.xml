@@ -5,7 +5,8 @@
     android:id="@+id/sfs"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color">
+    android:background="@color/background_color"
+    >
 
     <View
         android:id="@+id/view"
@@ -208,6 +209,7 @@
         android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/textView11"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -239,6 +241,7 @@
         android:layout_height="48dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -263,7 +266,7 @@
         android:inputType="textPersonName"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/systolic"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName2"
+
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
