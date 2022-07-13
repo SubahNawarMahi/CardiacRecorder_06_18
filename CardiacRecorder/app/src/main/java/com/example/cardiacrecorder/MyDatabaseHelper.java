@@ -1,4 +1,5 @@
 package com.example.cardiacrecorder;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -87,6 +88,17 @@ private Context context;
         long id= sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
         return id;
     }
+    public boolean checkIfDataExists(Long id) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String Query = "Select * from " + TABLE_NAME + " where " + ID + " = " + Long.toString(id);
+        Cursor cursor = sqLiteDatabase.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
     public Boolean updateData(String id,String sys,String dias,String pressure_status,String pulse,String pulse_status,String date,String time,String comments)
     {
 
@@ -106,6 +118,37 @@ private Context context;
 
         sqLiteDatabase.update(TABLE_NAME, contentValues, "_id = ?", new String[]{id});
 
+        return true;
+    }
+    public boolean checkDataBaseContent(String id, String sys, String dias, String pressure_status, String pulse, String pulse_status, String date, String time, String comments) {
+        SQLiteDatabase sqLiteDatabase =  this.getWritableDatabase();
+        String[] columns = {MyDatabaseHelper.SYSTOLIC, MyDatabaseHelper.DIASTOLIC, MyDatabaseHelper.BLOOD_PRESSURE_STATUS, MyDatabaseHelper.PULSE, MyDatabaseHelper.PULSE_STATUS, MyDatabaseHelper.DATE, MyDatabaseHelper.TIME, MyDatabaseHelper.COMMENTS};
+        Cursor cursor = sqLiteDatabase.query(MyDatabaseHelper.TABLE_NAME, columns, MyDatabaseHelper.ID+" = '"+id+"'", null, null, null, null);
+        while (cursor.moveToNext()) {
+            int index1 = cursor.getColumnIndex(MyDatabaseHelper.SYSTOLIC);
+            int index2 = cursor.getColumnIndex(MyDatabaseHelper.DIASTOLIC);
+            int index3 = cursor.getColumnIndex(MyDatabaseHelper.BLOOD_PRESSURE_STATUS);
+            int index4 = cursor.getColumnIndex(MyDatabaseHelper.PULSE);
+            int index5 = cursor.getColumnIndex(MyDatabaseHelper.PULSE_STATUS);
+            int index6 = cursor.getColumnIndex(MyDatabaseHelper.DATE);
+            int index7 = cursor.getColumnIndex(MyDatabaseHelper.TIME);
+            int index8 = cursor.getColumnIndex(MyDatabaseHelper.COMMENTS);
+
+            String sys1 = cursor.getString(index1);
+            String dia1 = cursor.getString(index2);
+            String bp_sta1 = cursor.getString(index3);
+            String pulse1 = cursor.getString(index4);
+            String pulse_sta1 = cursor.getString(index5);
+            String date1 = cursor.getString(index6);
+            String time1 = cursor.getString(index7);
+            String comm1 = cursor.getString(index8);
+
+            if (sys != sys1 || dias != dia1 || pressure_status != bp_sta1 || pulse != pulse1 || pulse_status != pulse1 || date != date1 || time1 != time || comments != comm1) {
+                cursor.close();
+                return false;
+            }
+        }
+        cursor.close();
         return true;
     }
     public long deleteList(String id)
