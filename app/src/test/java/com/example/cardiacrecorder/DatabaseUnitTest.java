@@ -120,9 +120,9 @@ public class DatabaseUnitTest {
         SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("hh:mm a");
         String time_value1 = simpleDateFormat.format(calendar.getTime());
 
-        myDatabaseHelper.updateData(Long.toString(id), systol1, diastol1, blood_pressure_status1, pulse1, pulse_status1,date_value1, time_value1, comments1);
+        boolean flag = myDatabaseHelper.updateDataWithId(Long.toString(id), systol1, diastol1, blood_pressure_status1, pulse1, pulse_status1,date_value1, time_value1, comments1);
 
-        assertFalse(myDatabaseHelper.checkDataBaseContent(Long.toString(id), systol1, diastol1, blood_pressure_status1, pulse1, pulse_status1,date_value1, time_value1, comments1));
+        assertTrue(flag);
 
         myDatabaseHelper.close();
     }

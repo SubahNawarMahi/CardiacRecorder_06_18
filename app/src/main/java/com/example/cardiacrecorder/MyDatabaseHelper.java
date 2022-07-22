@@ -190,6 +190,31 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public Boolean updateDataWithId(String id,String sys,String dias,String pressure_status,String pulse,String pulse_status,String date,String time,String comments)
+    {
+
+        // Toast.makeText(context,"id: "+id,Toast.LENGTH_SHORT).show();
+        SQLiteDatabase sqLiteDatabase =  this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ID,id);
+        contentValues.put(SYSTOLIC,sys);
+        contentValues.put(DIASTOLIC,dias);
+        contentValues.put(BLOOD_PRESSURE_STATUS,pressure_status);
+        contentValues.put(PULSE,pulse);
+        contentValues.put(PULSE_STATUS,pulse_status);
+        contentValues.put(DATE,"Date:"+date);
+        contentValues.put(TIME,"Time:"+time);
+        contentValues.put(COMMENTS,"Com: "+comments);
+
+        long res = sqLiteDatabase.update(TABLE_NAME, contentValues, "_id = ?", new String[]{id});
+
+        if (res > 0) return true;
+
+        return false;
+    }
+
+
     /**
      * compare if record on that id on database is equal
      * or not to the parameterized record
