@@ -26,22 +26,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * this CreateRecord activity creates a record and
- * put it or update it into the sqlite database
- */
 public class CreateRecord extends AppCompatActivity {
 
 
     MyDatabaseHelper myDatabaseHelper;
 
-    /**
-     * this onCreate method will execute when CreateRecord
-     * activity is created and this method execute data
-     * insertion and update in database using MyDatabaseHelper Class;
-     * @param savedInstanceState
-     * As for activity onCreate takes a Bundle parameter
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,12 +68,6 @@ public class CreateRecord extends AppCompatActivity {
 
         if (s.equals("-1")) {
             save.setOnClickListener(new View.OnClickListener() {
-                /**
-                 * this method will be used for data insertion
-                 * in database using MyDatabaseHelper Class
-                 * @param v
-                 * take a View type parameter to get user input
-                 */
                 @Override
                 public void onClick(View v) {
 
@@ -109,12 +92,10 @@ public class CreateRecord extends AppCompatActivity {
                     } else if (TextUtils.isEmpty(diastol)) {
                         dias.setError("Required");
                         return;
-                    } 
-                    //else if (TextUtils.isEmpty(comments)) {
-                      //  comm.setError("Required");
-                        //return;
-                //    } 
-                else if (TextUtils.isEmpty(pulse)) {
+                    } else if (TextUtils.isEmpty(comments)) {
+                        comm.setError("Required");
+                        return;
+                    } else if (TextUtils.isEmpty(pulse)) {
                         pul.setError("Required");
                         return;
                     }
@@ -161,12 +142,6 @@ public class CreateRecord extends AppCompatActivity {
 
         } else if (Integer.parseInt(s) != -1) {
             save.setOnClickListener(new View.OnClickListener() {
-                /**
-                 * this method will be used for data update
-                 * in database using MyDatabaseHelper Class
-                 * @param v
-                 * take a View type parameter to get user input
-                 */
                 @Override
                 public void onClick(View v) {
                     String id = s;
@@ -190,12 +165,10 @@ public class CreateRecord extends AppCompatActivity {
                     } else if (TextUtils.isEmpty(diastol)) {
                         dias.setError("Required");
                         return;
-                    } 
-                    //else if (TextUtils.isEmpty(comments)) {
-                      //  comm.setError("Required");
-                        //return;
-               //     } 
-                else if (TextUtils.isEmpty(pulse)) {
+                    } else if (TextUtils.isEmpty(comments)) {
+                        comm.setError("Required");
+                        return;
+                    } else if (TextUtils.isEmpty(pulse)) {
                         pul.setError("Required");
                         return;
                     }
@@ -244,4 +217,5 @@ public class CreateRecord extends AppCompatActivity {
 
     }
 }
+
 
