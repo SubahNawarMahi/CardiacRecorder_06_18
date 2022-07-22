@@ -16,10 +16,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * DatabaseUnitTest class for testing on Database insertion, update or delete
+ */
 @RunWith(RobolectricTestRunner.class)
 public class DatabaseUnitTest {
 
-
+    /**
+     * checks if a record is added successfully on database
+     */
     @Test
     public void testAdd() {
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(RuntimeEnvironment.application);
@@ -46,6 +51,9 @@ public class DatabaseUnitTest {
         myDatabaseHelper.close();
     }
 
+    /**
+     * checks if a record is deleted successfully on database
+     */
     @Test
     public void testdelete() {
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(RuntimeEnvironment.application);
@@ -74,6 +82,9 @@ public class DatabaseUnitTest {
         myDatabaseHelper.close();
     }
 
+    /**
+     * checks if update on database is successful
+     */
     @Test
     public void testUpdate() {
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(RuntimeEnvironment.application);

@@ -7,17 +7,33 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+/**
+ * HistoryActivityUnitTest class for testing on List insertion, update or delete
+ */
 public class HistoryActivityUnitTest {
+    /**
+     * create a Mock RecordList with one Record data
+     * @return
+     * returns a RecordList
+     */
     private  RecordList mockRecordList() {
         RecordList recordList = new RecordList();
         recordList.add(mockRecord());
         return recordList;
     }
 
+    /**
+     * create a Mock Record
+     * @return
+     * returns created Mock Record
+     */
     private Record mockRecord() {
         return new Record("95", "75", "68", "Tuesday,July 12", "08:02 PM", "after walk", "Normal", "Normal");
     }
 
+    /**
+     * checks if a record is added successfully on RecordList
+     */
     @Test
     public void testAdd() {
         RecordList recordList = mockRecordList();
@@ -30,6 +46,9 @@ public class HistoryActivityUnitTest {
         assertTrue(recordList.getRecords().contains(record));
     }
 
+    /**
+     * checks if add function handle exception successfully
+     */
     @Test
     public void testAddException() {
         RecordList recordList = new RecordList();
@@ -41,6 +60,9 @@ public class HistoryActivityUnitTest {
         });
     }
 
+    /**
+     * checks if getRecords return a List successfully
+     */
     @Test
     public void testGetRecords() {
         RecordList recordList = mockRecordList();
@@ -53,6 +75,9 @@ public class HistoryActivityUnitTest {
         assertEquals(0, mockRecord().compareTo(recordList.getRecords().get(0)));
     }
 
+    /**
+     * checks if record is deleted successfully from RecordList
+     */
     @Test
     public void testDelete() {
         RecordList temp = new RecordList();
@@ -65,6 +90,9 @@ public class HistoryActivityUnitTest {
         assertFalse(temp.getRecords().contains(a));
     }
 
+    /**
+     * checks if delete function handle exception successfully
+     */
     @Test
     public void testDeleteException() {
         RecordList temp = mockRecordList();
@@ -76,6 +104,9 @@ public class HistoryActivityUnitTest {
         });
     }
 
+    /**
+     * checks if countRecords function can count records on RecordList successfully
+     */
     @Test
     public void testcountRecords() {
         RecordList recordList = mockRecordList();
@@ -86,6 +117,9 @@ public class HistoryActivityUnitTest {
         assertEquals(2, recordList.countRecords());
     }
 
+    /**
+     * checks if record is updated successfully on RecordList
+     */
     @Test
     public void testupdate() {
         RecordList recordList = new RecordList();
@@ -99,6 +133,9 @@ public class HistoryActivityUnitTest {
         assertEquals(0, record2.compareTo(recordList.getRecords().get(0)));
     }
 
+    /**
+     * checks if update function handle exception in deleting successfully
+     */
     @Test
     public void testUpdateExceptionDelete() {
         RecordList recordList = new RecordList();
@@ -111,6 +148,9 @@ public class HistoryActivityUnitTest {
         });
     }
 
+    /**
+     * checks if update function handle exception in adding successfully
+     */
     @Test
     public void testUpdateExceptionAdd() {
         RecordList recordList = new RecordList();
