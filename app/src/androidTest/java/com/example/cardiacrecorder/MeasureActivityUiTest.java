@@ -24,9 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-/**
- * class for UI test on MeasureActivity
- */
 @RunWith(JUnit4.class)
 @LargeTest
 
@@ -40,11 +37,6 @@ public class MeasureActivityUiTest {
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule =
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
-
-    /**
-     * checks a floatingActionButton on MainActivity and
-     * by clicking it a new record is created
-     */
     @Test
     public void testDataInsert()
     {
