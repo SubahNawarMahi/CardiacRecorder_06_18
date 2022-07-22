@@ -8,13 +8,24 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
+/**
+ * this is MainActivity class of CardiacRecorder application
+ * HistoryActivity and MeasureActivity fragment will be on this
+ * MainActivity class
+ */
 public class MainActivity extends AppCompatActivity {
 
 
     TabLayout tabLayout;
     ViewPager viewPager;
 
-   // @SuppressLint("WrongViewCast")
+    // @SuppressLint("WrongViewCast")
+
+    /**
+     * this method will add two fragment using tabLayout
+     * @param savedInstanceState
+     * takes a Bundle type parameter
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

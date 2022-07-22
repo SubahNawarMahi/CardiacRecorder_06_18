@@ -22,6 +22,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+/**
+ * class for UI test on MainActivity
+ */
 @RunWith(JUnit4.class)
 @LargeTest
 
@@ -32,6 +35,10 @@ public class MainActivityUiTest {
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule =
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
+
+    /**
+     * checks if the testing is on main activity
+     */
     @Test
     public void testCheckPageAndPageTitle()
     {
@@ -40,6 +47,10 @@ public class MainActivityUiTest {
         onView(withText("Recorder")).check(matches(isDisplayed()));
 
     }
+
+    /**
+     * checks if TabLayout and ViewPager is displayed on main activity
+     */
     @Test
     public void testCheckTabLayoutAndViewPagerDisplayed()
     {
@@ -47,6 +58,10 @@ public class MainActivityUiTest {
         onView(withId(R.id.viewPagerId)).perform(click()).check(matches(isDisplayed()));
     }
 
+    /**
+     * checks if swapping on left and right is giving the
+     * correct result as historyLayout and MeasureLayout respectively
+     */
     @Test
     @UiThread
     public void testSwipePage()

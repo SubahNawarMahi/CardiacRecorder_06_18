@@ -10,6 +10,11 @@ import androidx.annotation.Nullable;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+/**
+ * this is a helper class which extends SQLiteOpenHelper class
+ * this helper class has some method to do some operation with
+ * sqlite database
+ */
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME="cardiac_recorder_list";
@@ -32,13 +37,24 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 
 
-private Context context;
+    private Context context;
 
+    /**
+     * initialize MyDatabaseHelper with context
+     * @param context
+     * initialize context
+     */
     public MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME,null,VERSION_NUMBER);
         this.context= context;
     }
 
+    /**
+     * onCreate of MyDatabaseHelper class this method will be
+     * executed and connect system with sqlite database
+     * @param db
+     * this uses SQLiteDatabase type as parameter
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
 //
@@ -54,6 +70,13 @@ private Context context;
 
     }
 
+    /**
+     * this method will do some update on database table
+     * @param db
+     * this is a SQLiteDatabase type parameter
+     * @param i
+     * @param i1
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
@@ -72,9 +95,26 @@ private Context context;
         }
     }
 
+    /**
+     * insert record into sqlite database
+     * @param systol
+     * systolic data
+     * @param diastol
+     * disatolic data
+     * @param blood_pressure_status
+     * blood_pressure_status will be showed
+     * @param pulse pulse of user
+     * @param pulse_status pulse_status of user
+     * @param date_value on which data record is inserted
+     * @param time_value on which time record is inserted
+     * @param comments comment on each record
+     * @return
+     * return the id of where this record data is inserted
+     * in database
+     */
     public long insertData(String systol, String diastol, String blood_pressure_status, String pulse, String pulse_status, String date_value, String time_value, String comments) {
 
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(SYSTOLIC,systol);
@@ -88,6 +128,15 @@ private Context context;
         long id= sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
         return id;
     }
+
+    /**
+     * check on a particular id if data exists or not
+     * on sqlite database
+     * @param id where to check for data on sqlite database
+     * @return
+     * true if data exists or false or no existence of data on
+     * that id
+     */
     public boolean checkIfDataExists(Long id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String Query = "Select * from " + TABLE_NAME + " where " + ID + " = " + Long.toString(id);
@@ -99,6 +148,26 @@ private Context context;
         cursor.close();
         return true;
     }
+
+    /**
+     * used to update data on database
+     * @param id
+     * id for each record
+     * @param sys
+     * systolic data
+     * @param dias
+     * disatolic data
+     * @param pressure_status
+     * blood_pressure_status will be showed
+     * @param pulse pulse of user
+     * @param pulse_status pulse_status of user
+     * @param date on which data record is inserted
+     * @param time on which time record is inserted
+     * @param comments comment on each record
+     * @return
+     * true if data is updated on that particular id or
+     * false if updateData is unsuccessful
+     */
     public Boolean updateData(String id,String sys,String dias,String pressure_status,String pulse,String pulse_status,String date,String time,String comments)
     {
 
@@ -120,6 +189,27 @@ private Context context;
 
         return true;
     }
+
+    /**
+     * compare if record on that id on database is equal
+     * or not to the parameterized record
+     * @param id
+     * id for each record
+     * @param sys
+     * systolic data
+     * @param dias
+     * disatolic data
+     * @param pressure_status
+     * blood_pressure_status will be showed
+     * @param pulse pulse of user
+     * @param pulse_status pulse_status of user
+     * @param date on which data record is inserted
+     * @param time on which time record is inserted
+     * @param comments comment on each record
+     * @return
+     * true if record on that id on database is equal,
+     * false if not equal
+     */
     public boolean checkDataBaseContent(String id, String sys, String dias, String pressure_status, String pulse, String pulse_status, String date, String time, String comments) {
         SQLiteDatabase sqLiteDatabase =  this.getWritableDatabase();
         String[] columns = {MyDatabaseHelper.SYSTOLIC, MyDatabaseHelper.DIASTOLIC, MyDatabaseHelper.BLOOD_PRESSURE_STATUS, MyDatabaseHelper.PULSE, MyDatabaseHelper.PULSE_STATUS, MyDatabaseHelper.DATE, MyDatabaseHelper.TIME, MyDatabaseHelper.COMMENTS};
@@ -151,13 +241,27 @@ private Context context;
         cursor.close();
         return true;
     }
+
+    /**
+     * delete a particular data from database table
+     * where row id is equal to parameterized id
+     * @param id
+     * id of that record which you want to delete
+     * @return
+     *
+     */
     public long deleteList(String id)
     {
         SQLiteDatabase sqLiteDatabase =  this.getWritableDatabase();
         return  sqLiteDatabase.delete(TABLE_NAME,ID+" = ?",new String[]{id});
     }
 
-
+    /**
+     * create a ListArray from fetching database all values
+     * using cursor
+     * @return
+     * a simpleCursorAdapter to return all values at once
+     */
     public SimpleCursorAdapter loadListViewFromDB() {
 
         SQLiteDatabase sqLiteDatabase =  this.getWritableDatabase();

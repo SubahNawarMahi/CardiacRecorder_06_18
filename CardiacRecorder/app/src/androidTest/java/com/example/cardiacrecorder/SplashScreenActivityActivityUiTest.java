@@ -13,6 +13,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+/**
+ * class for UI test on Splash Screen
+ */
 @RunWith(JUnit4.class)
 @LargeTest
 
@@ -21,6 +24,10 @@ public class SplashScreenActivityActivityUiTest {
     @Rule
     public ActivityScenarioRule<SplashScreenActivity> activityRule =
             new ActivityScenarioRule<SplashScreenActivity>(SplashScreenActivity.class);
+
+    /**
+     * checks if testing is on Splash Screen
+     */
     @Test
     public void testSplashScreenText()
     {
@@ -33,4 +40,3 @@ public class SplashScreenActivityActivityUiTest {
     }
 
 }
-
