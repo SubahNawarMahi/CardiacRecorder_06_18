@@ -109,10 +109,12 @@ public class CreateRecord extends AppCompatActivity {
                     } else if (TextUtils.isEmpty(diastol)) {
                         dias.setError("Required");
                         return;
-                    } else if (TextUtils.isEmpty(comments)) {
-                        comm.setError("Required");
-                        return;
-                    } else if (TextUtils.isEmpty(pulse)) {
+                    } 
+                    //else if (TextUtils.isEmpty(comments)) {
+                      //  comm.setError("Required");
+                        //return;
+                //    } 
+                else if (TextUtils.isEmpty(pulse)) {
                         pul.setError("Required");
                         return;
                     }
@@ -188,10 +190,12 @@ public class CreateRecord extends AppCompatActivity {
                     } else if (TextUtils.isEmpty(diastol)) {
                         dias.setError("Required");
                         return;
-                    } else if (TextUtils.isEmpty(comments)) {
-                        comm.setError("Required");
-                        return;
-                    } else if (TextUtils.isEmpty(pulse)) {
+                    } 
+                    //else if (TextUtils.isEmpty(comments)) {
+                      //  comm.setError("Required");
+                        //return;
+               //     } 
+                else if (TextUtils.isEmpty(pulse)) {
                         pul.setError("Required");
                         return;
                     }
