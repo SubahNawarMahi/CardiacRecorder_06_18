@@ -29,3 +29,16 @@ Here only comment field may be left blank for a record.
 
 See the [wiki](https://github.com/SubahNawarMahi/CardiacRecorder_06_18/wiki) for documentation, implementation details, and history.
 
+<p align="center">
+<img width="190" src="design/splashscreen.png" />
+<img width="190" src="design/measure.png" />
+<img width="190" src="design/createrecord.png" />
+<img width="190" src="design/history.png" />
+<img width="190" src="design/updatedelete.png" />
+</p>
+
+### Contributors:
+
+  * [Subah Nawar(1807006)](https://github.com/SubahNawarMahi)
+
+  * [Saimoon Al Farshi Oman (1807018)](https://github.com/saimoon-oman)
