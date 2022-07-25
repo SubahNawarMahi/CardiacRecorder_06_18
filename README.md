@@ -27,3 +27,5 @@ Each record has the following fields:
 
 Here only comment field may be left blank for a record.
 
+See the [wiki](https://github.com/SubahNawarMahi/CardiacRecorder_06_18/wiki) for documentation, implementation details, and history.
+
