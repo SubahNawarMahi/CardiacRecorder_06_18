@@ -54,7 +54,7 @@ public class CreateRecord extends AppCompatActivity {
         SQLiteDatabase sqLiteDatabase = myDatabaseHelper.getWritableDatabase();
 
 
-        Calendar calendar = Calendar.getInstance();
+        /*Calendar calendar = Calendar.getInstance();
 
         Date currentDate = calendar.getTime();
         String date_value = DateFormat.getDateInstance(DateFormat.FULL).format(currentDate);
@@ -63,7 +63,7 @@ public class CreateRecord extends AppCompatActivity {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
         String time_value = simpleDateFormat.format(calendar.getTime());
         time.setText(time_value);
-
+*/
         String s = getIntent().getStringExtra("key");
 
         if (s.equals("-1")) {
