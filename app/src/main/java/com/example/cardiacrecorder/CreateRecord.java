@@ -71,7 +71,8 @@ public class CreateRecord extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-
+                    String datee=date.getText().toString();
+                    String timee=time.getText().toString();
                     String systol = sys.getText().toString();
                     String diastol = dias.getText().toString();
                     String pulse = pul.getText().toString();
@@ -80,6 +81,8 @@ public class CreateRecord extends AppCompatActivity {
                     String blood_pressure_status = "";
                     String pulse_status = "";
 
+                    date.setText("");
+                    time.setText("");
                     sys.setText("");
                     dias.setText("");
                     pul.setText("");
@@ -92,10 +95,12 @@ public class CreateRecord extends AppCompatActivity {
                     } else if (TextUtils.isEmpty(diastol)) {
                         dias.setError("Required");
                         return;
-                    } else if (TextUtils.isEmpty(comments)) {
-                        comm.setError("Required");
-                        return;
-                    } else if (TextUtils.isEmpty(pulse)) {
+                    } 
+		//else if (TextUtils.isEmpty(comments)) {
+                  //      comm.setError("Required");
+                    //    return;
+                    //} 
+			else if (TextUtils.isEmpty(pulse)) {
                         pul.setError("Required");
                         return;
                     }
@@ -125,7 +130,7 @@ public class CreateRecord extends AppCompatActivity {
                         pulse_status += "exceptional";
                     }
 
-                    long id = myDatabaseHelper.insertData(systol, diastol, blood_pressure_status, pulse, pulse_status, date_value, time_value, comments);
+                    long id = myDatabaseHelper.insertData(systol, diastol, blood_pressure_status, pulse, pulse_status, datee, timee, comments);
 
                     if (id == -1) {
                         Toast.makeText(CreateRecord.this, "Data is not saved", Toast.LENGTH_SHORT).show();
@@ -145,6 +150,8 @@ public class CreateRecord extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     String id = s;
+                    String datee=date.getText().toString();
+                    String timee=time.getText().toString();
                     String systol = sys.getText().toString();
                     String diastol = dias.getText().toString();
                     String pulse = pul.getText().toString();
@@ -153,6 +160,8 @@ public class CreateRecord extends AppCompatActivity {
                     String blood_pressure_status = "";
                     String pulse_status = "";
 
+                    date.setText("");
+                    time.setText("");
                     sys.setText("");
                     dias.setText("");
                     pul.setText("");
@@ -165,10 +174,12 @@ public class CreateRecord extends AppCompatActivity {
                     } else if (TextUtils.isEmpty(diastol)) {
                         dias.setError("Required");
                         return;
-                    } else if (TextUtils.isEmpty(comments)) {
-                        comm.setError("Required");
-                        return;
-                    } else if (TextUtils.isEmpty(pulse)) {
+                    } 
+		//	else if (TextUtils.isEmpty(comments)) {
+                 //       comm.setError("Required");
+                   //     return;
+                    //} 
+			else if (TextUtils.isEmpty(pulse)) {
                         pul.setError("Required");
                         return;
                     }
@@ -198,7 +209,7 @@ public class CreateRecord extends AppCompatActivity {
                         pulse_status += "exceptional";
                     }
 
-                    boolean i = myDatabaseHelper.updateData(id, systol, diastol, blood_pressure_status, pulse, pulse_status, date_value, time_value, comments);
+                    boolean i = myDatabaseHelper.updateData(id, systol, diastol, blood_pressure_status, pulse, pulse_status, datee, timee, comments);
 
                     if (i) {
                         Toast.makeText(CreateRecord.this, "data is updated", Toast.LENGTH_SHORT).show();
